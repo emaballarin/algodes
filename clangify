@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+
+REPODIR="/home/emaballarin/repositories/"
+cd "$REPODIR/algodes"
+
+find . -type d -exec cp -f "./.clang-format" {} \;

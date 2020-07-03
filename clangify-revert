@@ -1,0 +1,8 @@
+#!/usr/bin/zsh
+
+REPODIR="/home/emaballarin/repositories/"
+cd "$REPODIR/algodes"
+
+cp -f ./.clang-format ./.clang-format-backup
+find . -type d -exec rm -R -f {}/./.clang-format \;
+mv -f ./.clang-format-backup ./.clang-format
