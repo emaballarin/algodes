@@ -41,8 +41,7 @@ void sum_matrix_blocks(float** C, float const* const* const A, float const* cons
     }
 }
 
-void zero_matrix_block(float** C, const size_t C_f_row,
-                       const size_t C_f_col, const size_t Crow, const size_t Ccol)
+void zero_matrix_block(float** C, const size_t C_f_row, const size_t C_f_col, const size_t Crow, const size_t Ccol)
 {
     for (size_t i = C_f_row; i < Crow; i++)
     {
@@ -203,8 +202,8 @@ void strassen_aux(float** C, float const* const* const A, float const* const* co
 }
 
 void strassen_aux_odd(float** C, float const* const* const A, float const* const* const B, const size_t C_f_row,
-                        const size_t C_f_col, const size_t A_f_row, const size_t A_f_col, const size_t B_f_row,
-                        const size_t B_f_col, const size_t n)
+                      const size_t C_f_col, const size_t A_f_row, const size_t A_f_col, const size_t B_f_row,
+                      const size_t B_f_col, const size_t n)
 {
     if (n <= 65)
     {
@@ -216,15 +215,16 @@ void strassen_aux_odd(float** C, float const* const* const A, float const* const
     if (n % 2)
     {
         // Pad
-        float** Apad = pad_new((float const* const* const)A, n, n, n+1, n+1, A_f_row, A_f_col);
-        float** Bpad = pad_new((float const* const* const)B, n, n, n+1, n+1, B_f_row, B_f_col);
-        float** Ctemp = allocate_matrix(n+1, n+1);
+        float** Apad = pad_new((float const* const* const)A, n, n, n + 1, n + 1, A_f_row, A_f_col);
+        float** Bpad = pad_new((float const* const* const)B, n, n, n + 1, n + 1, B_f_row, B_f_col);
+        float** Ctemp = allocate_matrix(n + 1, n + 1);
 
         // Multiply
-        strassen_aux_odd(Ctemp, (float const* const* const)Apad, (float const* const* const)Bpad,0, 0, 0, 0, 0, 0, n + 1);
+        strassen_aux_odd(Ctemp, (float const* const* const)Apad, (float const* const* const)Bpad, 0, 0, 0, 0, 0, 0,
+                         n + 1);
 
         // Copy-back
-        unpad(C, (float const* const* const)Ctemp,n+1, n+1, n, n, C_f_row, C_f_col);
+        unpad(C, (float const* const* const)Ctemp, n + 1, n + 1, n, n, C_f_row, C_f_col);
 
         // Tidy memory
         deallocate_matrix(Apad, n + 1);
@@ -382,7 +382,7 @@ void strassen_aux_odd_memc(float** C, float const* const* const A, float const* 
     P[0] = allocate_matrix(n2, n2);
 
     // Set to zero the C matrix blocks which will contain the result!
-    zero_matrix_block(C, C_f_row, C_f_col, C_f_row+n, C_f_col+n);
+    zero_matrix_block(C, C_f_row, C_f_col, C_f_row + n, C_f_col + n);
 
 
     // S1 = B12 - B22
@@ -613,8 +613,8 @@ void strassen_aux_odd_memopt(float** C, float const* const* const A, float const
                       C_f_col, 0, 0, n2);
 
     // C22 = P5 + ...
-    sum_matrix_blocks(C, (const float* const* const)C, (const float* const* const)P[0], C_f_row + n2, C_f_col + n2, C_f_row + n2,
-                      C_f_col + n2, 0, 0, n2);
+    sum_matrix_blocks(C, (const float* const* const)C, (const float* const* const)P[0], C_f_row + n2, C_f_col + n2,
+                      C_f_row + n2, C_f_col + n2, 0, 0, n2);
 
 
     // S7 = A12 - A22
@@ -628,8 +628,8 @@ void strassen_aux_odd_memopt(float** C, float const* const* const A, float const
                             n2);
 
     // C11 = P6 + ...
-    sum_matrix_blocks(C, (const float* const* const)C, (const float* const* const)P[0], C_f_row, C_f_col,
-                      C_f_row, C_f_col, 0, 0, n2);
+    sum_matrix_blocks(C, (const float* const* const)C, (const float* const* const)P[0], C_f_row, C_f_col, C_f_row,
+                      C_f_col, 0, 0, n2);
 
     // S9 = A11 - A21
     sub_matrix_blocks(S[0], A, A, 0, 0, A_f_row, A_f_col, A_f_row + n2, A_f_col, n2);
@@ -654,11 +654,10 @@ void strassen_aux_odd_memopt(float** C, float const* const* const A, float const
     // P matrices no longer needed
     deallocate_matrix(P[0], n2);
     free(P);
-
 }
 
-void strassen_matrix_multiplication_rect(float** C, const float* const* const A, const float* const* const B, size_t Arow,
-                           size_t Acol, size_t Bcol)
+void strassen_matrix_multiplication_rect(float** C, const float* const* const A, const float* const* const B,
+                                         size_t Arow, size_t Acol, size_t Bcol)
 {
     // Get the smallest side-size
     size_t minsize = getmin(getmin(Arow, Acol), Bcol);
@@ -683,8 +682,8 @@ void strassen_matrix_multiplication_rect(float** C, const float* const* const A,
         {
             for (size_t k = 0; k < ApadCol; k += minsize)
             {
-                strassen_aux_odd(Ctemp, (const float* const* const)Apad, (const float* const* const)Bpad, 0, 0, i, k, k, j,
-                             minsize);
+                strassen_aux_odd(Ctemp, (const float* const* const)Apad, (const float* const* const)Bpad, 0, 0, i, k, k,
+                                 j, minsize);
                 sum_matrix_blocks(Cout, (const float* const* const)Cout, (const float* const* const)Ctemp, i, j, i, j,
                                   0, 0, minsize);
                 zero_matrix(Ctemp, minsize, minsize);
@@ -701,7 +700,7 @@ void strassen_matrix_multiplication_rect(float** C, const float* const* const A,
 }
 
 void strassen_matrix_multiplication_rect_memc(float** C, const float* const* const A, const float* const* const B,
-                                         size_t Arow, size_t Acol, size_t Bcol)
+                                              size_t Arow, size_t Acol, size_t Bcol)
 {
     // Get the smallest side-size
     size_t minsize = getmin(getmin(Arow, Acol), Bcol);
@@ -726,8 +725,8 @@ void strassen_matrix_multiplication_rect_memc(float** C, const float* const* con
         {
             for (size_t k = 0; k < ApadCol; k += minsize)
             {
-                strassen_aux_odd_memc(Ctemp, (const float* const* const)Apad, (const float* const* const)Bpad, 0, 0, i, k, k,
-                                 j, minsize);
+                strassen_aux_odd_memc(Ctemp, (const float* const* const)Apad, (const float* const* const)Bpad, 0, 0, i,
+                                      k, k, j, minsize);
                 sum_matrix_blocks(Cout, (const float* const* const)Cout, (const float* const* const)Ctemp, i, j, i, j,
                                   0, 0, minsize);
                 zero_matrix(Ctemp, minsize, minsize);
@@ -744,7 +743,7 @@ void strassen_matrix_multiplication_rect_memc(float** C, const float* const* con
 }
 
 void strassen_matrix_multiplication_rect_memopt(float** C, const float* const* const A, const float* const* const B,
-                                         size_t Arow, size_t Acol, size_t Bcol)
+                                                size_t Arow, size_t Acol, size_t Bcol)
 {
     // Get the smallest side-size
     size_t minsize = getmin(getmin(Arow, Acol), Bcol);
@@ -769,8 +768,8 @@ void strassen_matrix_multiplication_rect_memopt(float** C, const float* const* c
         {
             for (size_t k = 0; k < ApadCol; k += minsize)
             {
-                strassen_aux_odd_memopt(Ctemp, (const float* const* const)Apad, (const float* const* const)Bpad, 0, 0, i, k, k,
-                                 j, minsize);
+                strassen_aux_odd_memopt(Ctemp, (const float* const* const)Apad, (const float* const* const)Bpad, 0, 0,
+                                        i, k, k, j, minsize);
                 sum_matrix_blocks(Cout, (const float* const* const)Cout, (const float* const* const)Ctemp, i, j, i, j,
                                   0, 0, minsize);
                 zero_matrix(Ctemp, minsize, minsize);

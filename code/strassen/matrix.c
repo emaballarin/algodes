@@ -1,8 +1,8 @@
 #include "matrix.h"
 
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 
 void naive_matrix_multiplication(float** C, float const* const* const A, float const* const* const B, const size_t n)
 {
@@ -107,18 +107,18 @@ float** callocate_matrix(const size_t rows, const size_t cols)
 }
 
 float** pad_new(float const* const* const ORIG, const size_t Orows, const size_t Ocols, const size_t Nrows,
-               const size_t Ncols, const size_t RowSeek, const size_t ColSeek)
+                const size_t Ncols, const size_t RowSeek, const size_t ColSeek)
 {
     assert(Nrows >= Orows);
     assert(Ncols >= Ocols);
 
-    float** PADDED = callocate_matrix(Nrows, Ncols);   // Loop less, calloc more!
+    float** PADDED = callocate_matrix(Nrows, Ncols);  // Loop less, calloc more!
 
     for (size_t i = 0; i < Orows; i++)
     {
         for (size_t j = 0; j < Ocols; j++)
         {
-            PADDED[i][j] = ORIG[i+RowSeek][j+ColSeek];
+            PADDED[i][j] = ORIG[i + RowSeek][j + ColSeek];
         }
     }
 
@@ -127,7 +127,8 @@ float** pad_new(float const* const* const ORIG, const size_t Orows, const size_t
     return PADDED;
 }
 
-void unpad(float** UNPADDED, float const* const* const ORIG, const size_t Orows, const size_t Ocols, const size_t Nrows, const size_t Ncols, const size_t FromRow, const size_t FromCol)
+void unpad(float** UNPADDED, float const* const* const ORIG, const size_t Orows, const size_t Ocols, const size_t Nrows,
+           const size_t Ncols, const size_t FromRow, const size_t FromCol)
 {
     assert(Nrows <= Orows);
     assert(Ncols <= Ocols);
@@ -161,7 +162,7 @@ void print_matrix(float** C, size_t rows, size_t cols)
     {
         for (size_t j = 0; j < cols; ++j)
         {
-            printf("%.2f",C[i][j]);
+            printf("%.2f", C[i][j]);
             printf(" ");
         }
         printf("\n");
