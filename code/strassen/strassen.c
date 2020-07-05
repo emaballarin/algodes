@@ -213,7 +213,7 @@ void strassen_aux_odd(float** C, float const* const* const A, float const* const
         return;
     }
 
-    if (n % 2 == 1)
+    if (n % 2)
     {
         // Pad
         float** Apad = pad_new((float const* const* const)A, n, n, n+1, n+1, A_f_row, A_f_col);
@@ -349,7 +349,7 @@ void strassen_aux_odd_memc(float** C, float const* const* const A, float const* 
         return;
     }
 
-    if (n % 2 == 1)
+    if (n % 2)
     {
         // Pad
         float** Apad = pad_new((float const* const* const)A, n, n, n + 1, n + 1, A_f_row, A_f_col);
@@ -513,7 +513,7 @@ void strassen_aux_odd_memopt(float** C, float const* const* const A, float const
         return;
     }
 
-    if (n % 2 == 1)
+    if (n % 2)
     {
         // Pad
         float** Apad = pad_new((float const* const* const)A, n, n, n + 1, n + 1, A_f_row, A_f_col);
