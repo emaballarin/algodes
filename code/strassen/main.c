@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-    size_t n = 1 << 9;
+    size_t n = 1 << 12;
 
     float** A = allocate_random_matrix(n, n);
     float** B = allocate_random_matrix(n, n);
