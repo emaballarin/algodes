@@ -1,5 +1,5 @@
-# FASTMAP
-### FAst STrassen with Minimal Additional Padding
+# `FASTMAP`
+### `FA`st `ST`rassen with `M`inimal `A`dditional `P`adding
 
 This repository contains the implementation of a variant of the original Strassen Matrix Multiplication Algorithm (note: not the Strassen-Winograd version) in order to deal with square-odd and general rectangular matrices.  
 
