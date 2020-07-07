@@ -15,7 +15,7 @@ typedef struct
     unsigned int num_of_elem;  // this is the number of nodes in the heap
     unsigned int max_size;     // maximum number of nodes, i.e. size of A.
     size_t key_size;           // size of the key type
-    total_order_type leq;      // this is the heap total order
+    total_order leq;           // this is the heap total order
     void* max_order_value;     // this is the maximum value stored in the heap
     unsigned int* key_pos;     // Key->position lookup array
     unsigned int* rev_pos;     // Position->key lookup array
@@ -79,7 +79,7 @@ const void* extract_min(binheap_type* H);
  * @return a pointer to the new binary heap.
  **********************************************************************/
 binheap_type* build_heap(void* A, const unsigned int num_of_elem, const unsigned int max_size, const size_t key_size,
-                         total_order_type leq);
+                         total_order leq);
 
 /**********************************************************************
  * Destroy a binary heap.
