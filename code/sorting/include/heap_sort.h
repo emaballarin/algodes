@@ -1,9 +1,9 @@
 #ifndef __HEAP_SORT__
 #define __HEAP_SORT__
 
-#include <stdlib.h>
-
 #include "total_order.h"
+
+#include <stdlib.h>
 
 /**********************************************************************
  * An implementation for the Heap Sort algorithm.
@@ -22,8 +22,6 @@
  * @param elem_size is the type size in bytes of the elements in A.
  * @param leq is the total order to be satisfied by the sorting.
  **********************************************************************/
-void heap_sort(void *A, const unsigned int n, 
-               const size_t elem_size, 
-               total_order leq);
+void heap_sort(void* A, const unsigned int n, const size_t elem_size, total_order leq);
 
-#endif // __HEAP_SORT__
+#endif  // __HEAP_SORT__

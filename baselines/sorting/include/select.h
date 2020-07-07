@@ -1,9 +1,9 @@
 #ifndef __SELECT__
 #define __SELECT__
 
-#include <stdlib.h>
-
 #include "total_order.h"
+
+#include <stdlib.h>
 
 /**********************************************************************
  * An implementation for the Select algorithm.
@@ -22,10 +22,7 @@
  * @param elem_size is the type size in bytes of the elements in A.
  * @param leq is the total order to be satisfied by the sorting.
  **********************************************************************/
-unsigned int select_index(void *A, const unsigned int n, 
-                          const unsigned int i,
-                          const size_t elem_size, 
-                          total_order leq);
+unsigned int select_index(void* A, const unsigned int n, const unsigned int i, const size_t elem_size, total_order leq);
 
 /**********************************************************************
  * An implementation for the Quick Sort algorithm.
@@ -46,8 +43,6 @@ unsigned int select_index(void *A, const unsigned int n,
  * @param elem_size is the type size in bytes of the elements in A.
  * @param leq is the total order to be satisfied by the sorting.
  **********************************************************************/
-void quick_sort_select(void *A, const unsigned int n, 
-                       const size_t elem_size, 
-                       total_order leq);
+void quick_sort_select(void* A, const unsigned int n, const size_t elem_size, total_order leq);
 
-#endif // __SELECT__
+#endif  // __SELECT__

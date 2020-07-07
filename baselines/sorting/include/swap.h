@@ -13,6 +13,6 @@
  * @param b a pointer to the second value to be swapped.
  * @param size is the length in bytes of the values to be swapped.
  **********************************************************************/
-void swap(void *a, void *b, const size_t size);
+void swap(void* a, void* b, const size_t size);
 
-#endif // __SWAP__
+#endif  // __SWAP__

@@ -1,9 +1,9 @@
 #ifndef __BUBBLE_SORT__
 #define __BUBBLE_SORT__
 
-#include <stdlib.h>
-
 #include "total_order.h"
+
+#include <stdlib.h>
 
 /**********************************************************************
  * An implementation for the Bubble Sort algorithm.
@@ -22,8 +22,6 @@
  * @param elem_size is the type size in bytes of the elements in A.
  * @param leq is the total order to be satisfied by the sorting.
  **********************************************************************/
-void bubble_sort(void *A, const unsigned int n, 
-                 const size_t elem_size, 
-                 total_order leq);
+void bubble_sort(void* A, const unsigned int n, const size_t elem_size, total_order leq);
 
-#endif // __BUBBLE_SORT__
+#endif  // __BUBBLE_SORT__
