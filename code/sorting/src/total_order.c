@@ -1,3 +1,5 @@
+#include "total_order.h"
+
 int leq_float(const void* a, const void* b)
 {
     return *((float*)a) <= *((float*)b);

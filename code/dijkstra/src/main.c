@@ -1,6 +1,7 @@
 #include "edsger.h"
 #include "graphops.h"
 #include "total_orders.h"
+
 #include <time.h>
 
 double sssp_timed_solve_array(linkedlist_type* graph, size_t reps, size_t graphsize)
@@ -8,7 +9,7 @@ double sssp_timed_solve_array(linkedlist_type* graph, size_t reps, size_t graphs
     solvedsssp_type* dummy;
 
     struct timespec requestStart, requestEnd;
-    double accum=(double)0;
+    double accum = (double)0;
 
     clock_gettime(CLOCK_REALTIME, &requestStart);
     for (size_t i = 0; i < reps; i++)
@@ -67,7 +68,7 @@ int main()
         printf("%f", hea_time);
         printf("\n");
 
-        destroy_graph(mygraph,graphsize);
+        destroy_graph(mygraph, graphsize);
     }
     return 0;
 }

@@ -1,5 +1,7 @@
 #include "edsger.h"
+
 #include "binheap.h"
+
 #include <limits.h>
 
 #define NIL (solution->num_of_elem + 2)
@@ -32,7 +34,7 @@ void destroy_solvedsssp(solvedsssp_type* solvedsssp)
 void init_sssp(solvedsssp_type* solution)
 {
 
-    for (size_t i=0; i<solution->num_of_elem; i++)
+    for (size_t i = 0; i < solution->num_of_elem; i++)
     {
         solution->distances[i] = UINT_MAX;
         solution->predecessors[i] = NIL;
@@ -65,17 +67,17 @@ solvedsssp_type* dijkstra_solve_array(linkedlist_type* graph, size_t num_of_elem
     solution->distances[source] = 0;
 
     // Queue building
-    size_t* array_queue = (size_t*)malloc(sizeof(size_t)*num_of_elem);
+    size_t* array_queue = (size_t*)malloc(sizeof(size_t) * num_of_elem);
     size_t queue_size = num_of_elem;
 
     // Start with the full queue
-    for (size_t i=0; i<queue_size; i++)
+    for (size_t i = 0; i < queue_size; i++)
     {
         array_queue[i] = i;
     }
 
     // Queue Iteration
-    while (queue_size > 0)      // Queue is not empty
+    while (queue_size > 0)  // Queue is not empty
     {
         // Find the index in the queue corresponding to the smallest distance
         size_t min_queue_idx = 0;
@@ -91,7 +93,7 @@ solvedsssp_type* dijkstra_solve_array(linkedlist_type* graph, size_t num_of_elem
         size_t min_node_idx = array_queue[min_queue_idx];
 
         // Extract min from the queue
-        array_queue[min_queue_idx] = array_queue[queue_size-1];
+        array_queue[min_queue_idx] = array_queue[queue_size - 1];
         queue_size--;
 
         // Relax Iteration
@@ -130,7 +132,7 @@ solvedsssp_type* dijkstra_solve_heap(linkedlist_type* graph, size_t num_of_elem,
     binheap_type* heap_queue = build_heap(solution->distances, num_of_elem, num_of_elem, sizeof(unsigned int), leq_usi);
 
     // Queue iteration
-    while(heap_queue->num_of_elem > 0)
+    while (heap_queue->num_of_elem > 0)
     {
         // Find the index in the queue corresponding to the smallest distance and get the corresponding node index
         //size_t min_node_idx = HEAP_POS_FROM_NODE(heap_queue, *(unsigned int*)extract_min(heap_queue));

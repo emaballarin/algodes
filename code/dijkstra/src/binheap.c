@@ -104,14 +104,14 @@ const void* extract_min(binheap_type* H)
     }
 
     // Swapping the keys among the root A[0] and the rightmost key of the last level A[num_of_elem-1]
-    swap_keys(H, KEY_FROM_POS(H, 0), KEY_FROM_POS(H,H->num_of_elem - 1));
+    swap_keys(H, KEY_FROM_POS(H, 0), KEY_FROM_POS(H, H->num_of_elem - 1));
 
     // Deleting the rightmost leaf of the last level A[num_of_elem-1]
     H->num_of_elem--;
 
-    heapify(H, KEY_FROM_POS(H,0));
+    heapify(H, KEY_FROM_POS(H, 0));
 
-    return ADDR(H, KEY_FROM_POS(H,H->num_of_elem));
+    return ADDR(H, KEY_FROM_POS(H, H->num_of_elem));
 }
 
 const void* find_the_max(void* A, const unsigned int num_of_elem, const size_t key_size, total_order_type leq)
@@ -124,7 +124,7 @@ const void* find_the_max(void* A, const unsigned int num_of_elem, const size_t k
     const void* max_value = A;
 
     // for all the values in A
-    for (const void* addr = A + key_size; addr != A + (num_of_elem-1) * key_size; addr += key_size)
+    for (const void* addr = A + key_size; addr != A + (num_of_elem - 1) * key_size; addr += key_size)
     {
         // if addr > max_value
         if (!leq(addr, max_value))
@@ -171,7 +171,7 @@ binheap_type* build_heap(void* A, const unsigned int num_of_elem, const unsigned
     {
         heapify(H, KEY_FROM_POS(H, i));
     }
-    heapify(H, KEY_FROM_POS(H,0));
+    heapify(H, KEY_FROM_POS(H, 0));
 
     return H;
 }

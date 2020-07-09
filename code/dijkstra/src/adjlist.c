@@ -30,13 +30,13 @@ void insert_block_in_adjlist(linkedlist_type* adjlist, const size_t nodekey, con
     listblock_type* new_listblock = create_new_adjlist_node(nodekey, weight);
 
     // Break-insert on head (to be faster; i.e. order is not important in the LL)
-    new_listblock->next = adjlist->head;    // Works even if NULL! ;)
+    new_listblock->next = adjlist->head;  // Works even if NULL! ;)
     adjlist->head = new_listblock;
     adjlist->len++;
 }
 
 
-void remove_block_from_adjlist(linkedlist_type* adjlist, const size_t nodekey)    // nodekey is unique!
+void remove_block_from_adjlist(linkedlist_type* adjlist, const size_t nodekey)  // nodekey is unique!
 {
     listblock_type* cursor = adjlist->head;
 
@@ -48,7 +48,7 @@ void remove_block_from_adjlist(linkedlist_type* adjlist, const size_t nodekey)  
         free(cursor);
         return;
     }
-    else    // Skip the check on head
+    else  // Skip the check on head
     {
         cursor = cursor->next;
         listblock_type* previously_touched = NULL;
@@ -77,7 +77,7 @@ void destroy_adjlist(linkedlist_type* adjlist)
 
     // Iterate the list and wipe everything found along the path :P
 
-    while(cursor)
+    while (cursor)
     {
         next_up = cursor->next;
         free(cursor);
@@ -94,7 +94,7 @@ void print_adjlist(linkedlist_type* adjlist, void (*key_printer)(const void* val
 {
     listblock_type* cursor = adjlist->head;
 
-    while(cursor)
+    while (cursor)
     {
         printf("->(key: ");
         key_printer(&(cursor->nodekey));

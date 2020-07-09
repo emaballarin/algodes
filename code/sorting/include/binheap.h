@@ -17,8 +17,6 @@ typedef struct
     size_t key_size;           // size of the key type
     total_order leq;           // this is the heap total order
     void* max_order_value;     // this is the maximum value stored in the heap
-    unsigned int* key_pos;     // Key->position lookup array
-    unsigned int* rev_pos;     // Position->key lookup array
 } binheap_type;
 
 /**********************************************************************

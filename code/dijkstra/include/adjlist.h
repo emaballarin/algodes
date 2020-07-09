@@ -11,8 +11,8 @@
 #ifndef __ADJLIST__
 #define __ADJLIST__
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // Useful to print node keys
 void sizet_printer(const void* value);
@@ -42,4 +42,4 @@ void remove_block_from_adjlist(linkedlist_type* adjlist, const size_t nodekey);
 void destroy_adjlist(linkedlist_type* adjlist);
 void print_adjlist(linkedlist_type* adjlist, void (*key_printer)(const void* value));
 
-#endif // __ADJLIST__
+#endif  // __ADJLIST__

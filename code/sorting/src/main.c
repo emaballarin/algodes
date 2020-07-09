@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-#define MAX_SIZE_ALL (1 << 13)
+#define MAX_SIZE_ALL (1 << 12)
 #define MAX_SIZE_NLOGN (1 << 20)
 #define ARRAY_SIZE (1 << 23)
 
@@ -78,6 +78,9 @@ int main(int argc, char* argv[])
         test_and_print(selection_sort, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
         test_and_print(heap_sort, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
     }
+
+    // Too long... :(
+    /*
     printf("\n\n\n");
     printf("Size\tQuick Sort\tQuick Sort +\tHeap Sort\n");
     printf("    \t          \t  Select\n");
@@ -90,6 +93,7 @@ int main(int argc, char* argv[])
         test_and_print(quick_sort_select, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
         test_and_print(heap_sort, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
     }
+     */
 
     printf("\n");
 

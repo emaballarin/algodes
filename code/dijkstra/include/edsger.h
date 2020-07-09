@@ -24,4 +24,4 @@ void relax_array_queue(size_t min_node_idx, listblock_type* adj_cursor, unsigned
 solvedsssp_type* dijkstra_solve_array(linkedlist_type* graph, size_t num_of_elem, size_t source);
 solvedsssp_type* dijkstra_solve_heap(linkedlist_type* graph, size_t num_of_elem, size_t source);
 
-#endif // __EDSGER__
+#endif  // __EDSGER__
