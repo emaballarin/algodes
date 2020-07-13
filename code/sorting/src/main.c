@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
     }
 
     // Too long... :(
-    /*
+    ///*
     printf("\n\n\n");
     printf("Size\tQuick Sort\tQuick Sort +\tHeap Sort\n");
     printf("    \t          \t  Select\n");
@@ -90,10 +90,10 @@ int main(int argc, char* argv[])
         const unsigned int A_size = 1 << i;
         printf("\n2^%d", i);
         test_and_print(quick_sort, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
-        test_and_print(quick_sort_select, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
+        //test_and_print(quick_sort_select, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
         test_and_print(heap_sort, A, A_size, sizeof(int), leq_int, NUM_OF_REPETITIONS);
     }
-     */
+     //*/
 
     printf("\n");
 

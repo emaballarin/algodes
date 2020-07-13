@@ -1,6 +1,0 @@
-#!/usr/bin/zsh
-
-REPODIR="/home/emaballarin/repositories/"
-cd "$REPODIR/algodes"
-
-find . -regex '.*\.\(cpp\|hpp\|cc\|cxx\|hxx\|c\|h\|hh\|C\|H\)' -exec clang-format -style=file -i {} \;

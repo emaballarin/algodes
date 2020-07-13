@@ -46,11 +46,11 @@ void quick_sort_aux(void* A, unsigned int l, const unsigned int r, const size_t 
 
     while (l < r)
     {
-        //p = partition(A, l, r, l, elem_size, leq);
+        p = partition(A, l, r, l, elem_size, leq);
 
         // Here some heuristics can be applied to select p, e.g.:
-        srand(time(NULL));  // Random pivot
-        p = partition(A, l, r, (l + rand() % (r - l)), elem_size, leq);
+        //srand(time(NULL));  // Random pivot
+        //p = partition(A, l, r, (l + rand() % (r - l)), elem_size, leq);
 
         quick_sort_aux(A, l, p, elem_size, leq);
         l = p + 1;

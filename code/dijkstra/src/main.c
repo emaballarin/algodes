@@ -50,7 +50,9 @@ int main()
 {
     printf("SIZE\t\tARRAY\t\tHEAP\n");
 
-    for (size_t graphsize = 20000; graphsize < 20001; graphsize += 2)
+    int nrnr = 20000;
+
+    for (size_t graphsize = nrnr; graphsize < nrnr+1; graphsize += 2)
     {
         linkedlist_type* mygraph = build_random_graph(graphsize, 0.5, 1, 500);
 
