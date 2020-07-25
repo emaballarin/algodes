@@ -64,6 +64,7 @@ gitignored-*
 /*build*
 *build*
 build/*
+!**/build.sh
 googletest-release*
 packagecache*
 /code-gallery
